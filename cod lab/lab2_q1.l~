@@ -1,0 +1,10 @@
+letter_ [_a-zA-Z]
+digit  [0-9]
+id {letter_}({letter_}|{digit})*
+%%
+{id}  { printf(" Identifier: %s\n", yytext); }
+\n  {printf("Not an identifier: %s\n", yytext); }
+%%
+main(){
+	yylex();
+}

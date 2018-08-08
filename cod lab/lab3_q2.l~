@@ -1,0 +1,18 @@
+letter_ [_a-zA-Z]
+digit  [0-9]
+id {letter_}({letter_}|{digit})*
+type {inttype}|char|{realtype}
+
+inttype (unsigned[ ]*{intver})|{intver}
+intver short[ ]*int|long[ ]*int|intf
+realtype float|double|long[ ]*double
+opast (=val|=id[ ]*)*
+opid (,[ ]{id}[ ]*{opast}[ ]*)*
+vardec {type}[ ]*id[ ]*{opast}[ ]*{opid};
+%%
+{vardec}  { printf(" extended Variable declaration: %s\n", yytext); }
+
+%%
+main(){
+	yylex();
+}

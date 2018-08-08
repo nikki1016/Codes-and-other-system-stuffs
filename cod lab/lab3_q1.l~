@@ -1,0 +1,13 @@
+letter_ [_a-zA-Z]
+digit  [0-9]
+id {letter_}({letter_}|{digit})*
+type int|char|float|double
+opid (,[ ]{id}[ ]?)*
+vardec {type}[ ]*{id}[ ]*{opid};
+%%
+{vardec}  { printf(" Variable declaration: %s\n", yytext); }
+\n  {printf(" Not Variable declaration: %s\n", yytext); }
+%%
+main(){
+	yylex();
+}
