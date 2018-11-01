@@ -1,0 +1,14 @@
+clear;
+img = imread('Image.jpg');
+red = img(:,:,1);
+green = img(:,:,2);
+blue = img(:,:,3);
+a = zeros(size(img,1), size(img,2));
+red_green = cat(3, red, green, a);
+green_blue = cat(3, a, green, blue);
+red_blue = cat(3, red, a, blue);
+hold on;
+subplot(2,2,1), subimage(img), title('normal');
+subplot(2,2,2), subimage(red_green), title('red & green');
+subplot(2,2,3), subimage(green_blue), title('green & blue');
+subplot(2,2,4), subimage(red_blue), title('red & blue');
